@@ -1,0 +1,37 @@
+Starting script execution at Fri Dec  6 08:55:03 PM CET 2024
+2024-12-06 20:55:03 [INFO] Displaying Main Menu
+2024-12-06 20:55:57 [INFO] User selected option 1 in Main Menu
+2024-12-06 20:55:57 [INFO] User chose Development
+2024-12-06 20:55:57 [INFO] Displaying Development Menu
+2024-12-06 20:58:28 [INFO] User selected option 6 in Development Menu
+2024-12-06 20:58:28 [INFO] User chose To Return to Main Menu
+2024-12-06 20:58:28 [INFO] Displaying Main Menu
+2024-12-06 20:58:29 [INFO] User selected option 2 in Main Menu
+2024-12-06 20:58:29 [INFO] User chose AI Menu
+2024-12-06 20:58:29 [INFO] Displaying AI Menu
+2024-12-06 20:58:49 [INFO] User selected option 4 in AI Menu
+2024-12-06 20:58:49 [INFO] User chose to Return to Previous Menu
+2024-12-06 20:58:49 [INFO] Displaying Main Menu
+2024-12-06 20:58:52 [INFO] User selected option 4 in Main Menu
+2024-12-06 20:58:52 [INFO] User chose System Tweaks Menu
+2024-12-06 20:58:52 [INFO] Displaying System Tweaks Menu
+2024-12-06 20:58:54 [INFO] User selected option 4 in System Tweaks Menu
+2024-12-06 20:58:54 [INFO] User chose to Return to Previous Menu
+2024-12-06 20:58:54 [INFO] Displaying Main Menu
+2024-12-06 20:58:56 [INFO] User selected option 3 in Main Menu
+2024-12-06 20:58:56 [INFO] User chose Drivers Menu
+2024-12-06 20:58:56 [INFO] Displaying Drivers Menu
+2024-12-06 20:59:23 [INFO] User selected option 4 in Drivers Menu
+2024-12-06 20:59:23 [INFO] User chose to return to Previous Menu
+2024-12-06 20:59:23 [INFO] Displaying Main Menu
+2024-12-06 20:59:36 [INFO] User selected option 54 in Main Menu
+2024-12-06 20:59:36 [WARN] User chose an invalid option : 54
+2024-12-06 20:59:37 [INFO] Displaying Main Menu
+2024-12-06 20:59:37 [INFO] User selected option 4 in Main Menu
+2024-12-06 20:59:37 [INFO] User chose System Tweaks Menu
+2024-12-06 20:59:37 [INFO] Displaying System Tweaks Menu
+2024-12-06 21:00:08 [INFO] User selected option 4 in System Tweaks Menu
+2024-12-06 21:00:08 [INFO] User chose to Return to Previous Menu
+2024-12-06 21:00:08 [INFO] Displaying Main Menu
+2024-12-06 21:00:09 [INFO] User selected option 5 in Main Menu
+2024-12-06 21:00:09 [INFO] User chose to quit
