@@ -31,7 +31,10 @@ scripts
 │   ├── android_studio_installer
 │   ├── angular_installer
 |   ├── oracle_vm_installer
-│   └── flutter_installer
+│   ├── flutter_installer
+|   └── docker
+|         ├── docker_installer
+|         └── docker_remover
 ├── drivers
 │    ├── cuda_installer
 |    ├── cuda_switcher 
@@ -51,14 +54,15 @@ scripts
 *  Screenshots of the script :
 <br><br>
 
-![Screenshot from 2024-10-13 16-50-11](https://github.com/user-attachments/assets/c4cd2712-afaa-4366-a068-c3b40e73c52b)
+![2024-12-06_20-55](https://github.com/user-attachments/assets/b477c59b-3abb-48a6-b271-4f773477d6fe)
 
+![2024-12-06_20-56](https://github.com/user-attachments/assets/70783455-2701-4052-8593-1c6c1d3f4f82)
 
-![Screenshot from 2024-10-13 16-50-44](https://github.com/user-attachments/assets/af35e621-9c1e-4b51-828e-6555db485295)
+![2024-12-06_20-58](https://github.com/user-attachments/assets/bbf11d7c-9129-470c-ad91-43d47513c450)
 
+![2024-12-06_20-59](https://github.com/user-attachments/assets/71beedf6-49f6-4d1f-9f76-59f97c37337a)
 
-![Screenshot from 2024-10-13 16-50-56](https://github.com/user-attachments/assets/62a0657e-f7a8-444b-b470-c3951080818a)
-
+![2024-12-06_20-59_1](https://github.com/user-attachments/assets/98aab35c-36b2-4175-89cd-0f7896e58a86)
 <br>
 * DEMO :<br>
 Live Script Installation of Conda on Ubuntu 24.04 :
