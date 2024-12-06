@@ -1,23 +1,7 @@
-# My Utility Script :
+# The Script Helper :
 *  A TUI script that helps you install development tools depending on your use case.
-*  This script is meant for ubuntu or ubuntu-based users (Maybe port for other distros)
-<br><br>
-*  Current Script Directory Structure :
-```
-.
-└── src
-    ├── menus
-    └── scripts
-        ├── ai
-        ├── dev
-        ├── drivers
-        └── tweaks
+*  This script is meant for ubuntu or ubuntu-based users
 
-```
-*  src : Directory for storing ressources <br>
-*  src/menus : Directory for menus definition <br>
-*  src/scripts : Directory for Installers Scripts related to each menu <br>
-<br><br>
 *  Available Scripts :
 ```
 scripts
@@ -71,14 +55,16 @@ Live Script Installation of Conda on Ubuntu 24.04 :
 https://github.com/user-attachments/assets/cb23403f-8ee3-49e7-bf38-89c38ffed16d
 
 
-
-
 To run the script :
 <pre>
-    $ git clone https://github.com/MHJedli/utility_script.git
-    $ cd utility_script/
+    $ https://github.com/cllfst/script_helper.git
+    $ cd script_helper/
     $ bash utility_script.sh
 </pre>
 
 > [!NOTE]
-> The script is improving by time. Expect new features in the future.
+> The script is improving by time. Expect new features in the future.<br>
+> You can contribute to make our script better by forking this repository and creating PRs<br>
+> Extra help is always appreciated ❤️
+
+
