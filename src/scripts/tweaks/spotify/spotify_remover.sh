@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log

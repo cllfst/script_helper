@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # External Functions/Files
 source $(pwd)/src/utils.sh
@@ -12,6 +12,7 @@ showSystemTweaksMenu(){
     "Install PipeWire Sound System" \
     "Fix Keyboard RGB backlight" \
     "Install Spotify" \
+    "Install Wine (Run Windows Apps for Linux)" \
     "Return to Previous Menu"
     
     echo -n "Enter Option : "
@@ -29,6 +30,9 @@ showSystemTweaksMenu(){
             showSpotifyMenu
             ;;
         4)
+            showWineMenu
+            ;;
+        5)
             log_message "INFO" "User chose to Return to Previous Menu"
             showMainMenu
             ;;
@@ -64,4 +68,13 @@ showSpotifyMenu(){
        "${scriptPaths["spotify_installer"]}" \
        "${scriptPaths["spotify_remover"]}" \
        "showSystemTweaksMenu"
+}
+
+showWineMenu(){
+    log_message "INFO" "User chose to Install Wine"
+    log_message "INFO" "Displaying Wine Menu"
+    optionMenu "                     Wine" \
+       "${scriptPaths["wine_installer"]}" \
+       "${scriptPaths["wine_remover"]}" \
+       "showSystemTweaksMenu"    
 }

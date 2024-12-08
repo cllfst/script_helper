@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # External Functions/Files
 source src/utils.sh
@@ -27,7 +27,7 @@ showMainMenu(){
 
     echo -n "Enter Option : "
     read option
-    log_message "INFO" "User selected option $option in Main Menu"
+    log_message "INFO" "User selected option ${option} in Main Menu"
 
     case $option in
         1)
@@ -51,7 +51,7 @@ showMainMenu(){
             return
             ;;
         *)
-            log_message "WARN" "User chose an invalid option : $option"
+            log_message "WARN" "User chose an invalid option : ${option}"
             invalidOption showMainMenu
             ;;
     esac

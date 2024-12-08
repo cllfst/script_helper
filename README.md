@@ -59,6 +59,9 @@ To run the script :
 <pre>
     $ https://github.com/cllfst/script_helper.git
     $ cd script_helper/
+    $ chmod +x utility_script.sh
+    $ ./utility_script.sh (Recommended)
+    or
     $ bash utility_script.sh
 </pre>
 

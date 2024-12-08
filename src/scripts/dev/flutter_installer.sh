@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/usr/bin/env bash -i
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -32,7 +32,7 @@ installFlutter(){
 
         echo -n -e "${CYAN}Install the Latest Flutter SDK Version ? (Y/n) :${RESET} "
         read option
-        log_message "INFO" "User chose option $option"
+        log_message "INFO" "User chose option ${option}"
 
         if [[ "$option" == "Y" || "$option" == "y" || "$option" == "" ]]; then
 
@@ -62,39 +62,39 @@ installFlutter(){
             echo "1. Show Versions"
             echo -n "Select Option/Version : "
             read ov
-            log_message "INFO" "User chose option/version $ov"
+            log_message "INFO" "User chose option/version ${ov}"
 
             if [[ "$ov" == "1" ]]; then
 
                 log_message "INFO" "Printing Flutter Versions"
                 for key in "${!flutterVersions[@]}"; do
-                    echo "Flutter SDK Version : $key"
+                    echo "Flutter SDK Version : ${key}"
                 done
                 echo -n "Press [ENTER] to continue..."
                 read
 
             elif [[ -v flutterVersions["$ov"] ]]; then
-                log_message "INFO" "User chose to install flutter version $ov"
+                log_message "INFO" "User chose to install flutter version ${ov}"
 
-                log_message "INFO" "Downloading Flutter SDK version $ov"
-                printc "YELLOW" "-> Downloading Flutter SDK $ov..."
+                log_message "INFO" "Downloading Flutter SDK version ${ov}"
+                printc "YELLOW" "-> Downloading Flutter SDK ${ov}..."
                 sleep 1
 
-                if [[ -f $(pwd)/flutter_linux_$ov-stable.tar.xz ]]; then
-                    rm $(pwd)/flutter_linux_$ov-stable.tar.xz
+                if [[ -f $(pwd)/flutter_linux_${ov}-stable.tar.xz ]]; then
+                    rm $(pwd)/flutter_linux_${ov}-stable.tar.xz
                 fi
 
-                wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_$ov-stable.tar.xz || handle_error "Failed to Download Flutter SDK version $ov"
+                wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${ov}-stable.tar.xz || handle_error "Failed to Download Flutter SDK version ${ov}"
 
                 log_message "INFO" "Extracting Flutter SDK to ~/"
                 printc "YELLOW" "-> Extracting Flutter SDK to ~/"
                 sleep 1
-                tar -xvf flutter_linux_$ov-stable.tar.xz -C ~/ || handle_error "Failed to Extract Flutter SDK to ~/"
+                tar -xvf flutter_linux_${ov}-stable.tar.xz -C ~/ || handle_error "Failed to Extract Flutter SDK to ~/"
                 return
 
             else
 
-                log_message "WARN" "User chose a wrong version : $ov"
+                log_message "WARN" "User chose a wrong version : ${ov}"
                 printc "RED" "Wrong Flutter SDK Version Selected !"
                 echo "Press [ENTER] to Continue"
                 read
@@ -103,7 +103,7 @@ installFlutter(){
 
         else
 
-            log_message "WARN" "User chose a wrong option : $option"
+            log_message "WARN" "User chose a wrong option : ${option}"
             invalidOption
 
         fi

@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/usr/bin/env bash -i
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -38,39 +38,39 @@ installCUDA(){
 
             log_message "INFO" "Printing NVIDIA CUDA Version"
             for key in "${!cudaVersions[@]}"; do
-                echo "NVIDIA CUDA Toolkit Version : $key"
+                echo "NVIDIA CUDA Toolkit Version : ${key}"
             done
             echo -n "Press [ENTER] to continue..."
             read 
 
         elif [[ -v cudaVersions["$option"] ]]; then
 
-            log_message "INFO" "Downloading NVIDIA CUDA Toolkit Version $option"
-            printc "YELLOW" "-> Downloading NVIDIA CUDA ToolKit Version $option"
+            log_message "INFO" "Downloading NVIDIA CUDA Toolkit Version ${option}"
+            printc "YELLOW" "-> Downloading NVIDIA CUDA ToolKit Version ${option}"
             sleep 1
             eval "${cudaVersions["$option"]}"
 
             log_message "INFO" "Installing NVIDIA CUDA ToolKit in Silent Mode"
             printc "YELLOW" "-> Installing NVIDIA CUDA ToolKit in Silent Mode..."
             sleep 1
-            sudo sh cuda_$option_*.run --silent --toolkit --toolkitpath=/usr/local/cuda-$option || handle_error "Failed to Install NVIDIA CUDA Toolkit"
+            sudo sh cuda_${option}_*.run --silent --toolkit --toolkitpath=/usr/local/cuda-${option} || handle_error "Failed to Install NVIDIA CUDA Toolkit"
 
             log_message "INFO" "Removing Old CUDA Path"
             printc "YELLOW" "-> Removing Old CUDA Path"
             sleep 1
             local oldCudaPath=$(cat ~/.bashrc | grep "export PATH=/usr/local/cuda*")
-            sed -i "s|$oldCudaPath||g" ~/.bashrc
+            sed -i "s|${oldCudaPath}||g" ~/.bashrc
 
             local oldCudaLDPath=$(cat ~/.bashrc | grep "export LD_LIBRARY_PATH=/usr/local/cuda*")
             local escapedOldCudaLDPath=$(printf '%s' "$oldCudaLDPath" | sed 's/[&/\]/\\&/g')
-            sed -i "s/$escapedOldCudaLDPath//g" ~/.bashrc
+            sed -i "s/${escapedOldCudaLDPath}//g" ~/.bashrc
 
             log_message "INFO" "Exporting new CUDA Path"
             printc "YELLOW" "-> Exporting CUDA Path..."
             sleep 1
             echo '# CUDA PATH' >> ~/.bashrc || handle_error "Failed to add CUDA Path"
-            echo export PATH=/usr/local/cuda-$option/bin'${PATH:+:${PATH}}' >> ~/.bashrc || handle_error "Failed to add CUDA Path"
-            echo export LD_LIBRARY_PATH=/usr/local/cuda-$option/lib64'\ {LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc || handle_error "Failed to add CUDA Path"
+            echo export PATH=/usr/local/cuda-${option}/bin'${PATH:+:${PATH}}' >> ~/.bashrc || handle_error "Failed to add CUDA Path"
+            echo export LD_LIBRARY_PATH=/usr/local/cuda-${option}/lib64'\ {LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}' >> ~/.bashrc || handle_error "Failed to add CUDA Path"
 
             log_message "INFO" "Applying CUDA Path"
             printc "YELLOW" "-> Applying CUDA Path..."
@@ -90,7 +90,7 @@ installCUDA(){
 
         else
 
-            log_message "WARN" "User chose a wrong option : $option"
+            log_message "WARN" "User chose a wrong option : ${option}"
             invalidOption
 
         fi

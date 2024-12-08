@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -10,39 +10,22 @@ echo "Continue script execution in Oracle VirtualBox Installation at $(date)" >>
 installVirtualBox(){
 
     local system_release=$(cat /etc/issue)
-    echo "What Ubuntu or Ubuntu-based version are you using ?"
-    printc "CYAN" "Choose Your Linux Distribution : ( Distribution In Use -> '${system_release:0:-6}' )"
-    echo "1. 24.04"
-    echo "2. 22.04"
-    echo "3. 20.04"
-    echo -n "Choose Your Option : "
-    read option
-    log_message "INFO" "User chose option $option"
+    local CODENAME=$(. /etc/os-release && echo "$UBUNTU_CODENAME")
 
-    case $option in
-    1)
-        log_message "INFO" "Downloading Oracle VM for Ubuntu or Ubuntu-Based 24.04"
-        printc "YELLOW" "-> Downloading Oracle VM for Ubuntu or Ubuntu-Based 24.04..."
-        sleep 1
-        wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~noble_amd64.deb
-        ;;
-    2)
-        log_message "INFO" "Downloading Oracle VM for Ubuntu or Ubuntu-Based 22.04"
-        printc "YELLOW" "-> Downloading Oracle VM for Ubuntu or Ubuntu-Based 22.04..."
-        sleep 1
-        wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~jammy_amd64.deb
-        ;;
-    3)
-        log_message "INFO" "Downloading Oracle VM for Ubuntu or Ubuntu-Based 20.04"
-        printc "YELLOW" "-> Downloading Oracle VM for Ubuntu or Ubuntu-Based 20.04..."
-        sleep 1
-        wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~focal_amd64.deb
-        ;;
-    *)
-        log_message "WARN" "User chose wrong option : $option"
-        invalidOption "installVirtualBox"
-        ;;
-    esac
+    log_message "WARN" "Warn User about System Requirement"
+    printc "YELLOW" "NOTE : Your System Must be Ubuntu or Ubuntu-Based >= 20.04"
+    echo -n "Press [ENTER] To Continue..."
+    read
+
+    log_message "INFO" "Downloading Oracle VM for ${system_release:0:-6}"
+    printc "YELLOW" "-> Downloading Oracle VM for ${system_release:0:-6}..."
+    sleep 1
+
+    if [[ -f $(pwd)/virtualbox-7.1_7.1.4-165100~Ubuntu~${CODENAME}_amd64.deb ]]; then
+        rm $(pwd)/virtualbox-7.1_7.1.4-165100~Ubuntu~${CODENAME}_amd64.deb
+    fi
+
+    wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Ubuntu~${CODENAME}_amd64.deb
 
     log_message "INFO" "Installing Oracle VM"
     printc "YELLOW" "-> Installing Oracle VM..."
