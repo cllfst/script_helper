@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/usr/bin/env bash -i
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -123,17 +123,17 @@ installPytorch(){
 
             if [[ -v cudaOptions["$co"] ]]; then
 
-                log_message "INFO" "User chose CUDA $co Support"
-                printc "YELLOW" "-> Installing Pytorch with CUDA $co Support..."
+                log_message "INFO" "User chose CUDA ${co} Support"
+                printc "YELLOW" "-> Installing Pytorch with CUDA ${co} Support..."
                 sleep 1
-                conda install pytorch torchvision torchaudio pytorch-cuda=$co -c pytorch -c nvidia || handle_error "Failed to Installing PyTorch with CUDA $co Support"
+                conda install pytorch torchvision torchaudio pytorch-cuda=$co -c pytorch -c nvidia || handle_error "Failed to Installing PyTorch with CUDA ${co} Support"
                 log_message "INFO" "Testing CUDA Support in Pytorch"
                 testCuda
                 return
 
             else
 
-                log_message "WARN" "User chose a wrong option : $co"
+                log_message "WARN" "User chose a wrong option : ${co}"
                 invalidOption
 
             fi
@@ -156,7 +156,7 @@ createEnvironment(){
         echo "2. Choose an existing Environment"
         echo -n "Your Option : "
         read option
-        log_message "INFO" "User chose option $option"
+        log_message "INFO" "User chose option ${option}"
 
         case $option in
 
@@ -167,15 +167,15 @@ createEnvironment(){
             sleep 1
             echo -n "Type Your Environment Name : "
             read new_env
-            conda create --name $new_env || handle_error "Failed to create $new_env environment"
+            conda create --name $new_env || handle_error "Failed to create ${new_env} environment"
 
-            log_message "INFO" "Activating The Working Environment : $new_env"
-            printc "YELLOW" "-> Activating The Working Environment : $new_env..."
+            log_message "INFO" "Activating The Working Environment : ${new_env}"
+            printc "YELLOW" "-> Activating The Working Environment : ${new_env}..."
             sleep 1
-            source activate base || handle_error "Failed to Activate $new_env Environment"
-            conda activate $new_env || handle_error "Failed to Activate $new_env Environment"
+            source activate base || handle_error "Failed to Activate ${new_env} Environment"
+            conda activate $new_env || handle_error "Failed to Activate ${new_env} Environment"
             echo "To Activate This Environment , Execute the Following :"
-            printc "GREEN" "conda activate $new_env"
+            printc "GREEN" "conda activate ${new_env}"
             echo -n "Press [ENTER] To Continue Installation..."
             read
             break
@@ -188,27 +188,27 @@ createEnvironment(){
 
             echo -n "Type Your Existing Conda Environment : "
             read your_env
-            printc "YELLOW" "-> Checking The Existence of $your_env..."
+            printc "YELLOW" "-> Checking The Existence of ${your_env}..."
             sleep 1
 
             if conda info --envs | grep -q $your_env; then
 
-                printc "GREEN" "$your_env Exists..."
+                printc "GREEN" "${your_env} Exists..."
                 sleep 1
-                log_message "INFO" "Activating The Working Environment : $your_env"
-                printc "YELLOW" "-> Activating The Working Environment : $your_env..."
+                log_message "INFO" "Activating The Working Environment : ${your_env}"
+                printc "YELLOW" "-> Activating The Working Environment : ${your_env}..."
                 sleep 1
-                source activate base || handle_error "Failed to Activate $your_env Environment"
-                conda activate $your_env || handle_error "Failed to Activate $your_env Environment"
+                source activate base || handle_error "Failed to Activate ${your_env} Environment"
+                conda activate $your_env || handle_error "Failed to Activate ${your_env} Environment"
                 echo "To Activate This Environment , Execute the Following :"
-                printc "GREEN" "conda activate $your_env"
+                printc "GREEN" "conda activate ${your_env}"
                 echo -n "Press [ENTER] To Continue Installation..."
                 read
                 break
 
             else
 
-                printc "RED" "$your_env Does NOT Exists !"
+                printc "RED" "${your_env} Does NOT Exists !"
                 echo -n "Press [ENTER] To Try Again..."
                 read
 

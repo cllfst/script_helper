@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -32,13 +32,13 @@ installAngular(){
             echo -e "What Version Do you want to install ? ${CYAN}(18, 17, 16, 15)${RESET}"
             echo "Angular Version : "
             read version
-            log_message "INFO" "User chose version $version"
+            log_message "INFO" "User chose version ${version}"
             if [[ -v versions["$version"] ]]; then
 
-                log_message "INFO" "Installing Angular version $version"
-                printc "YELLOW" "-> Installing Angular version $version..."
+                log_message "INFO" "Installing Angular version ${version}"
+                printc "YELLOW" "-> Installing Angular version ${version}..."
                 sleep 1
-                npm install -g @angular/cli@"$version" || handle_error "Failed to Install Angular version $version"
+                npm install -g @angular/cli@"${version}" || handle_error "Failed to Install Angular version ${version}"
                 return
 
             else

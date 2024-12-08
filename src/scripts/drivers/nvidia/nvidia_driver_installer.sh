@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source $(pwd)/src/utils.sh
 LOG_FILE=$(pwd)/src/logfile.log
@@ -27,7 +27,7 @@ installDriver(){
         echo "1. Show Available versions"
         echo -n "NVIDIA Driver Version [DEFAULT=560] : "
         read version
-        log_message "INFO" "User selected option $version"
+        log_message "INFO" "User selected option ${version}"
 
         if [[ "$version" == "1" ]]; then
 
@@ -48,14 +48,14 @@ installDriver(){
 
         elif [[ -v nvidiaVersions["$version"] ]]; then
 
-            log_message "INFO" "User chose NVIDIA Driver Version $version"
-            printc "YELLOW" "-> Installing NVIDIA Driver Version $version..."
-            sudo apt install nvidia-driver-$version -y || handle_error "Failed to Install NVIDIA Driver $version"
+            log_message "INFO" "User chose NVIDIA Driver Version ${version}"
+            printc "YELLOW" "-> Installing NVIDIA Driver Version ${version}..."
+            sudo apt install nvidia-driver-${version} -y || handle_error "Failed to Install NVIDIA Driver ${version}"
             return
 
         else
 
-            log_message "WARN" "User chose invalid NVIDIA Driver Version : $version"
+            log_message "WARN" "User chose invalid NVIDIA Driver Version : ${version}"
             invalidOption
             clear
 

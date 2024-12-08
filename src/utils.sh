@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define Color Variables
 # Usage : 
@@ -58,7 +58,8 @@ declare -A scriptPaths=(
     ["keyboard_rgb_fix_remover"]="src/scripts/tweaks/keyboard_rgb_fix/keyboard_rgb_fix_remover.sh"
     ["spotify_installer"]="src/scripts/tweaks/spotify/spotify_installer.sh"
     ["spotify_remover"]="src/scripts/tweaks/spotify/spotify_remover.sh"
-    
+    ["wine_installer"]="src/scripts/tweaks/wine/wine_installer.sh"
+    ["wine_remover"]="src/scripts/tweaks/wine/wine_remover.sh"
 )
 
 # Function that log every step taken for easier debugging
@@ -82,9 +83,9 @@ log_message() {
 handle_error() {
     local exit_status=$?
     local msg="$1"
-    log_message "ERROR" "$msg (Exit status: $exit_status)"
-    echo -e "An error occurred: ${RED}$msg${RESET}"
-    echo "Please check the log file at $LOG_FILE for more details."
+    log_message "ERROR" "${msg} (Exit status: ${exit_status})"
+    echo -e "An error occurred: ${RED}${msg}${RESET}"
+    echo "Please check the log file at ${LOG_FILE} for more details."
     read
     exit $exit_status
 }
@@ -120,7 +121,7 @@ showMenu() {
     echo "--------------------------------------"
     local index=1
     for option in "$@"; do
-        echo "$index. $option"
+        echo "${index}. ${option}"
         ((index++))
     done
 }
@@ -137,7 +138,7 @@ optionMenu() {
     local removeScript=$3
     local previousMenu=$4
     while true; do
-        log_message "INFO" "Displaying $selectedOption Menu"
+        log_message "INFO" "Displaying ${selectedOption} Menu"
         clear
         echo "-------------------------------------------------"
         echo " $selectedOption   "
@@ -147,14 +148,14 @@ optionMenu() {
         echo "3. Return To Previous Menu"
         echo -n "Enter Option: "
         read option
-        log_message "INFO" "User selected option $option in the $selectedOption Menu"
+        log_message "INFO" "User selected option ${option} in the ${selectedOption} Menu"
         case $option in
             1)
-                log_message "INFO" "User chose to Install $selectedOption" 
+                log_message "INFO" "User chose to Install ${selectedOption}" 
                 bash "$installScript" 
                 ;;
             2)
-                log_message "INFO" "User chose to Remove $selectedOption"
+                log_message "INFO" "User chose to Remove ${selectedOption}"
                 bash "$removeScript" 
                 ;;
             3)
@@ -163,7 +164,7 @@ optionMenu() {
                 return 
                 ;;
             *)
-                log_message "WARN" "User chose an invalid option : $option"
+                log_message "WARN" "User chose an invalid option : ${option}"
                 invalidOption 
                 optionMenu "$selectedOption" "$installScript" "$removeScript" "$previousMenu"
                 ;;
@@ -185,7 +186,7 @@ distroMenu() {
     local ubuntuScriptInstaller=$2
     local previousMenu=$3
     while true; do
-        log_message "INFO" "Displaying $selectedOption Menu"
+        log_message "INFO" "Displaying ${selectedOption} Menu"
         clear
         echo "-------------------------------------------------"
         echo " $selectedOption   "
@@ -195,7 +196,7 @@ distroMenu() {
         echo "2. Return To Previous Menu"
         echo -n "Enter Option: "
         read option
-        log_message "INFO" "User selected option $option in the $selectedOption Menu"
+        log_message "INFO" "User selected option ${option} in the ${selectedOption} Menu"
         case $option in
             1)
                 log_message "INFO" "User chose Ubuntu or Ubuntu-Based" 
